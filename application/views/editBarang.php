@@ -53,9 +53,9 @@
 				<div class="form-group row">
                     <div class="col-sm-11 col-md-5">
                         Tanggal Daftar <label style="color: red">*</label>
-                        <input id="txtTanggal" type="date" class="form-control" name="tgl_daftar" value="<?php echo $barang->tgl_daftar; ?>" required/>
+                        <input id="txtTanggal" type="date" class="form-control" name="tgl_daftar" value="<?php echo date('Y-m-d',strtotime($barang->tgl_daftar)); ?>" required/>
                     </div>
-                    <!-- <div class="col-sm-1">
+                    <!-- <div class="col-sm-1"> echo $barang->tgl_daftar;
                         &nbsp;&nbsp;<label style="color: red">*</label>
                     </div> -->
                 </div>
