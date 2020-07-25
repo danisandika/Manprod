@@ -18,29 +18,29 @@
                 
                 <div class="form-group row">
                     <div class="col-sm-11 col-md-11">
-                        Nama Barang
+                        Nama Barang <label style="color: red">*</label>
                         <input id="txtNamaBarang" type="text" class="form-control" name="nama_barang"/>
                     </div>
-                    <div class="col-sm-1">
+                    <!-- <div class="col-sm-1">
                         &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-5 col-md-5">
-                        Jenis Barang
+                        Jenis Barang <label style="color: red">*</label>
                         <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="jenis_barang" required/>
                     </div>
-                    <div class="col-sm-1">
+                    <!-- <div class="col-sm-1">
                         &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
+                    </div> -->
                     <div class="col-sm-5">
-                        Jumlah Barang
+                        Jumlah Barang <label style="color: red">*</label>
                         <input id="txtJumlahBarang" type="number" class="form-control col-lg-12" name="qty" required/>
                     </div>
-                    <div class="col-sm-1">
+                    <!-- <div class="col-sm-1">
                         &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
+                    </div> -->
                 </div>
 
 				<div class="form-group row">
@@ -48,34 +48,34 @@
                         Keterangan
                         <input id="txtKeterangan" type="text" class="form-control" name="keterangan"/>
                     </div>
-                    <div class="col-sm-1">
+                    <!-- <div class="col-sm-1">
                         &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
+                    </div> -->
                 </div>
 				
 				<div class="form-group row">
-                    <div class="col-sm-11 col-md-11">
-                        Tanggal Daftar
+                    <div class="col-sm-11 col-md-5">
+                        Tanggal Daftar<label style="color: red">*</label>
                         <input id="txtTanggal" type="date" class="form-control" name="tgl_daftar"/>
                     </div>
-                    <div class="col-sm-1">
+                    <!-- <div class="col-sm-1">
                         &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
+                    </div> -->
                 </div>
 
+                <div class="form-group row">
                     <div class="col-sm-5 col-md-5">
-
-                        Status
+                        Status <label style="color: red">*</label>
                         <select class="form-control col-lg-12" name="status" required>
-                        <option value="" disabled selected>--Pilih Status--</option>
-                        <option value="1">Aktif</option>
-                        <option value="0">Tidak Aktif</option>
+                            <option value="" disabled selected>--Pilih Status--</option>
+                            <option value="1">Aktif</option>
+                            <option value="0">Tidak Aktif</option>
                         </select>
-
                     </div>
-                    <div class="col-sm-1">
+                    <!-- <div class="col-sm-1">
                         &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
+                    </div> -->
+                    <!-- </div>   -->
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
