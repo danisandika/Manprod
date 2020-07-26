@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -25,16 +25,19 @@ class Login extends CI_Controller {
 
 			if($data != null)
 			{
-				$email = $data->email_kry; 
+				$idrole = $user->getRole($data->id_role);
+				$id = $data->id_kry;
+				$email = $data->email_kry;
 				$nama = $data->nama_kry;
-				$ro = $data->role;
+				$ro = $idrole->nama_role;
 
 				$newdata = array(
+					'user_id' => $id,
 					'user_email' => $email,
 					'user_nama' => $nama,
 					'user_role' => $ro,
 				);
-				
+
 				$this->session->set_userdata($newdata);
 
 				if($ro == "Admin")
@@ -57,7 +60,7 @@ class Login extends CI_Controller {
 				}
 				else
 				{
-					echo "<script>alert('User atau password tidak terdaftar!');</script>";		
+					echo "<script>alert('User atau password tidak terdaftar!');</script>";
 				}
 			}
 			else
@@ -76,4 +79,3 @@ class Login extends CI_Controller {
 		}
 	}
 }
-

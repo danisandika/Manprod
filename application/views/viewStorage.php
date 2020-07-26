@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    kelola Penyimpanan
+    Storage
 <?php
     $tittle = ob_get_clean();
     ob_flush();
@@ -7,58 +7,56 @@
 
 <?php ob_start(); ?>
 <div class="card shadow mb-4">
-    <div class="card-header">
+  <div class="card-header">
       <div class="card-title">
-        <h5 class="m-0 font-weight-bold text-primary">Kelola Penyimpanan</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Tambah Storage</h5>
       </div>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-8">
-            <a href="<?php echo base_url('KelolaStorage/p_addStorage')?>" class="btn btn-primary">Tambah Penyimpanan</a>
-            </div>
-        </div>
-        <br>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 13px">
-                    <thead>
-                    <tr> 
-                        <th>No</th>
-                        <th>Nama Letak Penyimpanan</th>
-                        <th>Posisi</th>
-                        <th>Keterangan</th>
-                        <th>Status</th>
-                        <th width="300px">Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        $no=1;
-                        foreach($storage as $item) { ?>
-                    <tr>
-                        <td><?php echo $no; ?></td>
-                        <td><?php echo $item->Area; ?></td>
-                        <td><?php echo $item->Lemari; ?></td>
-                        <td><?php echo $item->keterangan; ?></td>
-                        <td><?php if($item->status==1){echo "<span class='badge badge-info'>Aktif</span>";}else{echo "<span class='badge badge-danger'>Non Aktif</span>";} ?></td>
-                        <td>
-                        <a title="Ubah Penyimpanan" href="<?php echo site_url('KelolaStorage/p_editStorage/'.$item->id_str); ?>"><span class="btn btn-xs btn-teal tooltips"><i
-                                class="fa fa-eye"></i></span></a>
-
-                        <?php if($item->status==1) { ?><a title="Hapus Penyimpanan" onclick="deleteConfirm('<?php echo base_url('KelolaStorage/hapus/'.$item->id_str) ?>')" href="#"><span class="btn btn-xs btn-teal tooltips"><i class="fa fa-trash"></i></span></a>
-
-                        <?php }else{ ?> <a title="Aktifkan" onclick="aktifConfirm('<?php echo base_url('KelolaStorage/aktif/'.$item->id_str) ?>')" href="#"><span class="btn btn-xs btn-teal tooltips"><i class="fa fa-check"></i></span></a> <?php } ?>
-
-                        </td>
-                    </tr>
-                    <?php
-                    $no++;
-                    } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+<div class="card-content">
+<div class="card-body">
+  <div class="row">
+      <div class="col-sm-8">
+      <a href="<?php echo base_url('KelolaStorage/tambahStorage')?>" class="btn btn-primary">Tambah Storage</a>
+      </div>
+  </div>
+  <br/>
+<div class="table-responsive">
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+          <th>No</th>
+          <th>Area</th>
+          <th>Rak</th>
+          <th>Tingkat</th>
+          <th>Nomor Rak</th>
+          <th>Status</th>
+          <th style="width:100px;">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php $no=1;
+      foreach($storage as $item) {?>
+      <tr>
+        <td><?php echo $no; ?></td>
+        <td><?php echo $item->area ?></td>
+        <td><?php echo $item->racking ?></td>
+        <td><?php echo $item->tingkat ?></td>
+        <td><?php echo $item->no_racking ?></td>
+        <td>
+          <?php if($item->status==1){ ?><span class="badge badge-warning">Terisi</span> <?php }else if($item->status==2){ ?>
+              <span class="badge badge-danger">Full</span><?php }else{ ?><span class="badge badge-success">Kosong</span> <?php } ?>
+        </td>
+        <td><a title="Edit Storage"  href="<?php echo site_url('KelolaStorage/editStorage/'.$item->id_storage); ?>"><span class="btn btn-xs btn-teal tooltips"><i
+                class="fa fa-edit"></i></span></a>
+       </td>
+      </tr>
+    <?php } ?>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
 <?php
     $mainContent = ob_get_clean();
     include ('Masterpage.php');

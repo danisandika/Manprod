@@ -26,11 +26,12 @@
                         <th>No</th>
                         <th>Nama Barang</th>
                         <th>Jenis Barang</th>
-						<th>Jumlah Barang</th>
+						            <th>Jumlah Barang</th>
                         <th>Keterangan</th>
-						<th>Tanggal Daftar</th>
+						            <th>Tanggal Daftar</th>
                         <th>Status</th>
-                        <th width="300px">Aksi</th>
+                        <th>Barcode</th>
+                        <th width="100px">Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,12 +40,13 @@
                         foreach($barang as $item) { ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $item->nama_barang; ?></td> 
+                        <td><?php echo $item->nama_barang; ?></td>
                         <td><?php echo $item->jenis_barang; ?></td>
-						<td><?php echo $item->qty; ?></td>
+						            <td><?php echo $item->qty; ?></td>
                         <td><?php echo $item->keterangan; ?></td>
-						<td><?php echo $item->tgl_daftar; ?></td>
+						            <td><?php echo date_format(new datetime($item->tgl_daftar),"d F Y"); ?></td>
                         <td><?php if($item->status==1){echo "<span class='badge badge-info'>Aktif</span>";}else{echo "<span class='badge badge-danger'>Non Aktif</span>";} ?></td>
+                        <td><img style="width: 100px;" src="<?php echo base_url().'assets/image_barcode/'.$item->barcode;?>"></td>
                         <td>
                         <a title="Ubah Barang" href="<?php echo site_url('KelolaBarang/editBarang/'.$item->id_barang); ?>"><span class="btn btn-xs btn-teal tooltips"><i
                                 class="fa fa-eye"></i></span></a>
@@ -54,6 +56,7 @@
                         <?php }else{ ?> <a title="Aktifkan" onclick="aktifConfirm('<?php echo base_url('KelolaBarang/aktif/'.$item->id_barang) ?>')" href="#"><span class="btn btn-xs btn-teal tooltips"><i class="fa fa-check"></i></span></a> <?php } ?>
 
                         </td>
+
                     </tr>
                     <?php
                     $no++;

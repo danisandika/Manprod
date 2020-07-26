@@ -11,13 +11,6 @@ class Karyawan extends CI_Model
         parent::__construct();
   }
 
-  public function getAll()
-  {
-     $this->db->select('*')
-             ->from('karyawan');
-    $query = $this->db->get();
-    return $query->result();
-  }
 
   public function getByID($id_kry)
   {
@@ -28,6 +21,34 @@ class Karyawan extends CI_Model
     return $query->row();
   }
 
+  public function getKaryawanTransaksiPengambilan()
+  {
+    $role = array('Staff', 'Admin');
+    $this->db->select('k.*,r.nama_role as role')
+             ->from('karyawan k')
+             ->join('role r','r.id_role=k.id_role')
+             ->where('k.status',1)
+             ->where_not_in('nama_role',$role);
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+
+  public function getAll()
+  {
+     $this->db->select('*')
+             ->from('karyawan')
+             ->join('role', 'role.id_role=karyawan.id_role');
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  function get_role(){
+        $hasil=$this->db->query("SELECT * FROM role");
+        return $hasil;
+    }
+
+
   public function save()
   {
     $post = $this->input->post();
@@ -36,7 +57,7 @@ class Karyawan extends CI_Model
     $this->pass = $post["pass"];
     $this->email_kry = $post["email_kry"];
     $this->sex = $post["sex"];
-    $this->role = $post["role"];
+    $this->id_role = $post["id_role"];
     $this->status = $post["status"];
 		return $this->db->insert($this->_table,$this);
 
@@ -51,8 +72,8 @@ class Karyawan extends CI_Model
     $this->pass = $post["pass"];
     $this->email_kry = $post["email_kry"];
     $this->sex = $post["sex"];
-    $this->role = $post["role"];
-    //$this->status = $post["status"];
+    $this->id_role = $post["role"];
+    $this->status = $post["status"];
 
     $where = array(
       'id_kry' => $this->input->post("id_kry"),
@@ -84,6 +105,7 @@ class Karyawan extends CI_Model
     $this->db->where($where);
     return $this->db->update($this->_table, $this);
   }
+
 
 }
 

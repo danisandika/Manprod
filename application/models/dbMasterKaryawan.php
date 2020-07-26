@@ -14,5 +14,11 @@ class DbMasterKaryawan extends CI_Model
 		$query = $this->db->get_where($this->_table,$array);
 		return $query->row();
 	}
+
+	public function getRole($id){
+		$array = array('id_role' => $id);
+		$query = $this->db->get_where('role',$array);
+		return $query->row();
+	}
 }
 ?>

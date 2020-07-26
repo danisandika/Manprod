@@ -4,68 +4,69 @@ class Storage extends CI_Model
 {
     private $_table = "storage";
 
-    public function getAll()
+  public function getAll()
 	{
 		return $this->db->get($this->_table)->result();
-    }
-    
+  }
+
+  public function getAllNotFull()
+  {
+      $this->db->select('*')
+              ->from('storage')
+              ->where('status',0);
+      $query = $this->db->get();
+      return $query->result();
+  }
+
+  public function getStorageByBarang($id_barang)
+  {
+      $this->db->select('*')
+              ->from('storage')
+              ->where('id_barang',$id_barang)
+              ->order_by('tgl_masuk','ASC');
+      $query = $this->db->get();
+      return $query->result();
+  }
+
     public function getByID($id_str)
     {
         $this->db->select('*')
                 ->from('storage')
-                ->where('id_str',$id_str);
+                ->where('id_storage',$id_str);
         $query = $this->db->get();
         return $query->row();
     }
 
+
     public function save()
     {
         $post = $this->input->post();
-        $this->nama_str = $post["nama_str"];
-        $posisi = $post["posisi"] . "-" . $post["Lantai"];
-        $this->posisi = $posisi;
+        $this->area = $post["area"];
+        $this->racking = $post["racking"];
+        $this->tingkat = $post["tingkat"];
+        $this->no_racking = $post["no_racking"];
         $this->keterangan = $post["keterangan"];
-        $this->status = $post["status"];
+        $this->status = 0;
         return $this->db->insert($this->_table,$this);
     }
 
     public function update()
     {
         $post = $this->input->post();
-        $this->nama_str = $post["nama_str"];
-        $posisi = $post["posisi"] . "-" . $post["Lantai"];
-        $this->posisi = $posisi;
+        $this->area = $post["area"];
+        $this->racking = $post["racking"];
+        $this->tingkat = $post["tingkat"];
+        $this->no_racking = $post["no_racking"];
         $this->keterangan = $post["keterangan"];
-        $this->status = $post["status"];
 
         $where = array(
-        'id_str' => $this->input->post("id_str"),
+        'id_storage' => $this->input->post("id_storage"),
         );
-        
+
         $this->db->where($where);
         return $this->db->update($this->_table, $this);
     }
 
 
-    public function hapus($id_str)
-    {
-        $this->status = 0;
-        
-        $where = array(
-        'id_str' => $id_str,
-        );
-        $this->db->where($where);
-        return $this->db->update($this->_table, $this);
-    }
-
-    public function aktif($id_str)
-    {
-        $this->status = 1;
-        
-        $where = array(
-        'id_str' => $id_str,
-        );
-        $this->db->where($where);
-        return $this->db->update($this->_table, $this);
-    }
+    
 }

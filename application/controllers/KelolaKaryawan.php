@@ -7,6 +7,7 @@
 		{
 			parent::__construct();
      	 	$this->load->model("Karyawan");
+     	 	$this->load->model("model_role");
      	 	$this->load->library("session");
    			$this->load->library('form_validation');
 		}
@@ -20,7 +21,8 @@
     public function tKaryawan()
 	  {
       	$data['karyawan'] = $this->Karyawan->getAll();
-	    $this->load->view('tambahKaryawan',$data);
+      	$data['karyawan'] = $this->Karyawan->get_role();
+	    	$this->load->view('tambahKaryawan',$data);
 	  }
 
     public function eKaryawan()

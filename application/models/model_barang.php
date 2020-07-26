@@ -5,16 +5,18 @@ class model_barang extends CI_Model
     private $_table = "barang";
 
     public function getAll()
-	{
-		return $this->db->get($this->_table)->result();
+	  {
+		    return $this->db->get($this->_table)->result();
     }
 
-    public function getData()
-    {
-        $query = $this->db->get('barang');
-        return $query; 
+    public function getBarangNotNull(){
+      $this->db->select('*')
+              ->from('barang')
+              ->where('qty !=',0);
+      $query = $this->db->get();
+      return $query->result();
     }
-    
+
     public function getByID($id_barang)
     {
         $this->db->select('*')
@@ -24,16 +26,44 @@ class model_barang extends CI_Model
         return $query->row();
     }
 
+    public function cekkodebarang()
+    {
+        $query = $this->db->query("SELECT MAX(barcode_string) as barcode_string from barang");
+        $hasil = $query->row();
+        return $hasil->barcode_string;
+    }
+
     public function save()
     {
+        $barcodeString = $this->cekkodebarang();
+        $nobarcode = substr($barcodeString,3,4);
+        $nobarcodeInt = $nobarcode+1;
+        $nobarcodeFix = "BRG".sprintf("%04s", $nobarcodeInt);
+
         $post = $this->input->post();
         $this->nama_barang = $post["nama_barang"];
         $this->jenis_barang = $post["jenis_barang"];
-        $this->qty = $post["qty"];
+        $this->qty = 0;
+        $this->satuan = $post["satuan"];
+        $this->kemasan = $post["kemasan"];
         $this->keterangan = $post["keterangan"];
-		$this->tgl_daftar = $post["tgl_daftar"];
-		$this->status = $post["status"];
+		    $this->tgl_daftar = date('Y-m-d');
+		    $this->status = 1;
+        $this->barcode_string = $nobarcodeFix;
+        $this->barcode = $this->cetakBarcode($nobarcodeFix);
+
         return $this->db->insert($this->_table,$this);
+    }
+
+    public function cetakBarcode($nama){
+        $this->load->library('zend');
+        $this->zend->load('Zend/Barcode');
+        $image_resource = Zend_Barcode::factory('code128', 'image', array('text'=>$nama), array())->draw();
+        $image_name     = $nama.'.jpg';
+        $image_dir      = './assets/image_barcode/'; // penyimpanan file barcode
+        imagejpeg($image_resource, $image_dir.$image_name);
+
+        return $image_name;
     }
 
     public function update()
@@ -41,15 +71,14 @@ class model_barang extends CI_Model
         $post = $this->input->post();
         $this->nama_barang = $post["nama_barang"];
         $this->jenis_barang = $post["jenis_barang"];
-        $this->qty = $post["qty"];
+        $this->satuan = $post["satuan"];
+        $this->kemasan = $post["kemasan"];
         $this->keterangan = $post["keterangan"];
-		$this->tgl_daftar = $post["tgl_daftar"];
-		$this->status = $post["status"];
 
         $where = array(
         'id_barang' => $this->input->post("id_barang"),
         );
-        
+
         $this->db->where($where);
         return $this->db->update($this->_table, $this);
     }
@@ -58,7 +87,7 @@ class model_barang extends CI_Model
     public function hapus($id_barang)
     {
         $this->status = 0;
-        
+
         $where = array(
         'id_barang' => $id_barang,
         );
@@ -69,7 +98,7 @@ class model_barang extends CI_Model
     public function aktif($id_barang)
     {
         $this->status = 1;
-        
+
         $where = array(
         'id_barang' => $id_barang,
         );

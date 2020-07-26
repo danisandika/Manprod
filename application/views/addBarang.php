@@ -15,68 +15,54 @@
     <div class="card-content">
         <div class="card-body">
             <form class="" role="form" action="<?php echo site_url('KelolaBarang/tambah') ?>" method="post">
-                
                 <div class="form-group row">
                     <div class="col-sm-11 col-md-11">
-                        Nama Barang <label style="color: red">*</label>
-                        <input id="txtNamaBarang" type="text" class="form-control" name="nama_barang"/>
+                        Nama Barang&nbsp;<label style="color: red">*</label>
+                        <input id="txtNamaBarang" type="text" class="form-control" name="nama_barang" required />
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-5 col-md-5">
-                        Jenis Barang <label style="color: red">*</label>
+                    <div class="col-sm-5 col-md-11">
+                        Jenis Barang&nbsp;<label style="color: red">*</label>
                         <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="jenis_barang" required/>
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                    <div class="col-sm-5">
-                        Jumlah Barang <label style="color: red">*</label>
-                        <input id="txtJumlahBarang" type="number" class="form-control col-lg-12" name="qty" required/>
+                    <div class="col-sm-1">
+                        &nbsp;
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                </div>
-
-				<div class="form-group row">
-                    <div class="col-sm-11 col-md-11">
-                        Keterangan
-                        <input id="txtKeterangan" type="text" class="form-control" name="keterangan"/>
-                    </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                </div>
-				
-				<div class="form-group row">
-                    <div class="col-sm-11 col-md-5">
-                        Tanggal Daftar<label style="color: red">*</label>
-                        <input id="txtTanggal" type="date" class="form-control" name="tgl_daftar"/>
-                    </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-5 col-md-5">
-                        Status <label style="color: red">*</label>
-                        <select class="form-control col-lg-12" name="status" required>
-                            <option value="" disabled selected>--Pilih Status--</option>
-                            <option value="1">Aktif</option>
-                            <option value="0">Tidak Aktif</option>
-                        </select>
+                        Satuan&nbsp;<label style="color: red">*</label>
+                        <input id="txtSatuan" type="text" class="form-control col-lg-12" name="satuan" required/>
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                    <!-- </div>   -->
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-5">
+                        Kemasan&nbsp;<label style="color: red">*</label>
+                        <input id="txtKemasan" type="text" class="form-control col-lg-12" name="kemasan" required/>
+                    </div>
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
                 </div>
+
+				          <div class="form-group row">
+                    <div class="col-sm-11 col-md-11">
+                        Keterangan
+                        <textarea id="txtKeterangan" rows="3" cols="12" class="form-control" name="keterangan"></textarea>
+                    </div>
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
+                </div>
+
+
                 <br>
                 <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
                 <hr />

@@ -65,12 +65,15 @@
           </a>
           <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaRole' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaRole')?>">Kelola Role</a>
 
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'kelolaKaryawan' ? 'active' : ''; ?>" href="<?php echo base_url('kelolaKaryawan')?>">Kelola Karyawan</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaKaryawan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaKaryawan')?>">Kelola Karyawan</a>
 
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'kelolaBarang' ? 'active' : ''; ?>" href="<?php echo base_url('kelolaBarang')?>">Kelola Barang</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaSupplier' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaSupplier')?>">Kelola Supplier</a>
 
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'kelolaPenyimpanan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaStorage')?>">Kelola Penyimpanan</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaBarang' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaBarang')?>">Kelola Barang</a>
+
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaStorage' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaStorage')?>">Kelola Penyimpanan</a>
           </div>
         </li>
 
@@ -85,12 +88,13 @@
           </a>
           <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'transaksiPenyimpanan' ? 'active' : ''; ?>" href="<?php echo base_url('TransaksiPenyimpanan')?>">Transaksi Penyimpanan</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaTransaksiPenyimpanan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaTransaksiPenyimpanan')?>">Transaksi Penyimpanan</a>
+
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'TransaksiPenyimpananToStorage' ? 'active' : ''; ?>" href="<?php echo base_url('TransaksiPenyimpananToStorage')?>">Tambah ke Storage</a>
+
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaTransaksiPengambilan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaTransaksiPengambilan')?>">Transaksi Pengambilan</a>
 
 
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'kelolaTransaksiAmbil' ? 'active' : ''; ?>" href="<?php echo base_url('kelolaTransaksiAmbil')?>">Transaksi Pengambilan</a>
-
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'kelolaTransaksiTerima' ? 'active' : ''; ?>" href="<?php echo base_url('kelolaTransaksiTerima')?>">Transaksi Penerimaan</a>
 
 
           </div>
@@ -186,7 +190,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Pelatihan 2019</span>
+            <span>Copyright &copy; Gudang 2020</span>
           </div>
         </div>
       </footer>

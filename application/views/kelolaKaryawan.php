@@ -30,7 +30,7 @@
                         <th>Password</th>
                         <th>Email</th>
                         <th>Jenis Kelamin</th>
-                        <th>Divisi</th>
+                        <th>Role</th>
                         <th>Status</th>
                         <th width="300px">Aksi</th>
                     </tr>
@@ -46,7 +46,7 @@
                       <td><?php echo $item->pass; ?></td>
                       <td><?php echo $item->email_kry; ?></td>
                       <td><?php echo $item->sex; ?></td>
-                      <td><?php echo $item->role; ?></td>
+                      <td><?php echo $item->nama_role; ?></td>
                       <td><?php if($item->status==1){echo "<span class='badge badge-info'>Aktif</span>";}else{echo "<span class='badge badge-danger'>Non Aktif</span>";} ?></td>
                       <td>
                         <a title="Ubah Karyawan" href="<?php echo site_url('KelolaKaryawan/eKaryawan/'.$item->id_kry); ?>"><span class="btn btn-xs btn-teal tooltips"><i

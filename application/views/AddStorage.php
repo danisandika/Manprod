@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    Tambah Penyimpanan
+    Tambah Storage
 <?php
     $tittle = ob_get_clean();
     ob_flush();
@@ -9,58 +9,57 @@
 <div class="card shadow">
     <div class="card-header">
       <div class="card-title">
-        <h5 class="m-0 font-weight-bold text-primary">Tambah Penyimpanan</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Tambah Storage</h5>
       </div>
     </div>
     <div class="card-content">
         <div class="card-body">
             <form class="" role="form" action="<?php echo site_url('KelolaStorage/tambah') ?>" method="post">
-                
                 <div class="form-group row">
                     <div class="col-sm-11 col-md-11">
-                        Nama Penyimpanan
-                        <input id="txtnamaStr" type="text" class="form-control" name="nama_str" value="Area "/>
+                        Area&nbsp;<label style="color: red">*</label>
+                        <input id="txtRole" type="text" class="form-control" name="area" required/>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-5 col-md-5">
-                        Lemari
-                        <input id="txtPosisi" type="number" class="form-control col-lg-12" name="posisi" required/>
-                    </div>
-                    <div class="col-sm-5 col-md-5">
-                        Lantai
-                        <input id="txtLantai" type="number" class="form-control col-lg-12" name="Lantai" required/>
+                    <div class="col-sm-11 col-md-11">
+                        Rak&nbsp;<label style="color: red">*</label>
+                        <input id="txtDeskripsi" type="text" class="form-control" name="racking" required/>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
-                    <div class="col-sm-5">
-                        Keterangan
-                        <input id="txtNama" type="textarea" class="form-control col-lg-12" name="keterangan" required/>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-5 col-md-5">
+                        Tingkat&nbsp;<label style="color: red">*</label>
+                        <input id="txtDeskripsi" type="number" class="form-control" name="tingkat" required/>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        Nomor Rak&nbsp;<label style="color: red">*</label>
+                        <input id="txtDeskripsi" type="number" class="form-control" name="no_racking" required/>
+                    </div>
+                    <div class="col-sm-1">
+                        &nbsp;
                     </div>
                 </div>
-
-
-                    <div class="col-sm-5 col-md-5">
-
-                        Status Penyimpanan
-                        <select class="form-control col-lg-12" name="status" required>
-                        <option value="" disabled selected>--Pilih Status--</option>
-                        <option value="1">Aktif</option>
-                        <option value="0">Tidak Aktif</option>
-                        </select>
-
+                <div class="form-group row">
+                    <div class="col-sm-11 col-md-11">
+                        Dekripsi&nbsp;<label style="color: red">*</label>
+                        <textarea id="txtDeskripsi" class="form-control" name="keterangan"></textarea>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
+
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>

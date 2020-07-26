@@ -17,67 +17,48 @@
             <form class="" role="form" action="<?php echo site_url('KelolaBarang/update') ?>" method="post">
             <input type="hidden" value="<?php echo $barang->id_barang; ?>" name="id_barang">
                 <div class="form-group row">
-                    <div class="col-sm-11 col-md-11">
-                        Nama Barang <label style="color: red">*</label>
+                    <div class="col-sm-5 col-md-5">
+                        Nama Barang&nbsp;<label style="color: red">*</label>
                         <input id="txtNamabarang" type="text" class="form-control" name="nama_barang" value="<?php echo $barang->nama_barang; ?>"/>
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                </div>
-
-                <div class="form-group row">
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
                     <div class="col-sm-5 col-md-5">
-                        Jenis Barang <label style="color: red">*</label>
+                        Jenis Barang&nbsp;<label style="color: red">*</label>
                         <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="jenis_barang" value="<?php echo $barang->jenis_barang; ?>" required/>
                     </div>
-                    <div class="col-sm-5">
-                        Jumlah Barang <label style="color: red">*</label>
-                        <input id="txtJumlahBarang" type="number" class="form-control col-lg-12" name="qty" value="<?php echo $barang->qty; ?>" required/>
+                    <div class="col-sm-1">
+                        &nbsp;
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                </div>
-				
-				<div class="form-group row">
-                    <div class="col-sm-11 col-md-11">
-                        Keterangan
-                        <input id="txtKeterangan" type="text" class="form-control" name="keterangan" value="<?php echo $barang->keterangan; ?>" required/>
-                    </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
-                </div>
-				
-				<div class="form-group row">
-                    <div class="col-sm-11 col-md-5">
-                        Tanggal Daftar <label style="color: red">*</label>
-                        <input id="txtTanggal" type="date" class="form-control" name="tgl_daftar" value="<?php echo date('Y-m-d',strtotime($barang->tgl_daftar)); ?>" required/>
-                    </div>
-                    <!-- <div class="col-sm-1"> echo $barang->tgl_daftar;
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
                 </div>
 
                 <div class="form-group row">
+                  <div class="col-sm-5 col-md-5">
+                      Jenis Barang&nbsp;<label style="color: red">*</label>
+                      <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="kemasan" value="<?php echo $barang->kemasan; ?>" required/>
+                  </div>
+                  <div class="col-sm-1">
+                      &nbsp;
+                  </div>
                     <div class="col-sm-5 col-md-5">
-
-                        Status Penyimpanan <label style="color: red">*</label>
-                        <select class="form-control col-lg-12" name="status" required>
-                        <?php if($storage->status == 1) {?>
-                            <option value="1">Aktif</option>
-                            <option value="0">Tidak Aktif</option>
-                        <?php }else{ ?>
-                            <option value="0">Tidak Aktif</option>
-                            <option value="1">Aktif</option>    
-                        <?php }?>
-                        </select>
-
+                        Satuan&nbsp;<label style="color: red">*</label>
+                        <input id="txtJumlahBarang" type="text" class="form-control col-lg-12" name="satuan" value="<?php echo $barang->satuan; ?>" required/>
                     </div>
-                    <!-- <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div> -->
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
+                </div>
+
+				        <div class="form-group row">
+                    <div class="col-sm-11 col-md-11">
+                        Keterangan
+                        <textarea id="txtKeterangan"  class="form-control" name="keterangan"><?php echo $barang->keterangan; ?></textarea>
+                    </div>
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
+                </div>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
@@ -86,7 +67,6 @@
             </form>
         </div>
     </div>
-</div>
 
 <?php
     $mainContent = ob_get_clean();
