@@ -22,7 +22,7 @@
                     <th>No</th>
                     <th>Nama Barang</th>
                     <th>Jenis Barang</th>
-                    <th>Jumlah Barang</th>
+                    <th>Jumlah Barang di Rak</th>
                     <th>Keterangan</th>
                     <th>Tanggal Daftar</th>
                     <th>Status</th>

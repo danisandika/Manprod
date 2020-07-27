@@ -25,9 +25,9 @@
               <tr>
                   <th>No</th>
                   <th>Nama Barang</th>
-                  <th>Jumlah</th>
-                  <th>Jumlah Masuk</th>
-                  <th>Jumlah Menunggu</th>
+                  <th bgcolor="red"><font color="#fff">Jumlah Total</font></th>
+                  <th bgcolor="green"><font color="#fff">Jumlah Masuk Rak</font></th>
+                  <th bgcolor="orange"><font color="#fff">Jumlah Menunggu</font></th>
                   <th>Karyawan</th>
                   <th>Supplier</th>
                   <th>Tanggal Masuk</th>

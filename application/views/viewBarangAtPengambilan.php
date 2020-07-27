@@ -22,7 +22,7 @@
                     <th>No</th>
                     <th>Nama Barang</th>
                     <th>Jenis Barang</th>
-                    <th>Jumlah Barang</th>
+                    <th style="text-align:center;">Jumlah Barang di Storage</th>
                     <th>Keterangan</th>
                     <th>Tanggal Daftar</th>
                     <th>Status</th>
@@ -37,7 +37,7 @@
                     <td><?php echo $no; ?></td>
                     <td><?php echo $item->nama_barang; ?></td>
                     <td><?php echo $item->jenis_barang; ?></td>
-                    <td><?php echo $item->qty; ?></td>
+                    <td style="text-align:center;"><?php echo $item->qty; ?></td>
                     <td><?php echo $item->keterangan; ?></td>
                     <td><?php echo date_format(new datetime($item->tgl_daftar),"d F Y"); ?></td>
                     <td><?php if($item->status==1){echo "<span class='badge badge-info'>Aktif</span>";}else{echo "<span class='badge badge-danger'>Non Aktif</span>";} ?></td>
