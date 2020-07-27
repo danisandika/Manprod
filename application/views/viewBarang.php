@@ -28,10 +28,11 @@
                         <th>Jenis Barang</th>
 						            <th>Jumlah Barang</th>
                         <th>Keterangan</th>
+                        <th style="display:none;">Barcode</th>
 						            <th>Tanggal Daftar</th>
                         <th>Status</th>
                         <th>Barcode</th>
-                        <th width="100px">Aksi</th>
+                        <th width="150px">Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@
                         <td><?php echo $item->jenis_barang; ?></td>
 						            <td><?php echo $item->qty; ?></td>
                         <td><?php echo $item->keterangan; ?></td>
+                        <td style="display:none;"><?php echo $item->barcode_string; ?></td>
 						            <td><?php echo date_format(new datetime($item->tgl_daftar),"d F Y"); ?></td>
                         <td><?php if($item->status==1){echo "<span class='badge badge-info'>Aktif</span>";}else{echo "<span class='badge badge-danger'>Non Aktif</span>";} ?></td>
                         <td><img style="width: 100px;" src="<?php echo base_url().'assets/image_barcode/'.$item->barcode;?>"></td>
@@ -55,6 +57,7 @@
 
                         <?php }else{ ?> <a title="Aktifkan" onclick="aktifConfirm('<?php echo base_url('KelolaBarang/aktif/'.$item->id_barang) ?>')" href="#"><span class="btn btn-xs btn-teal tooltips"><i class="fa fa-check"></i></span></a> <?php } ?>
 
+                        <a title="Download Barcode" href="<?php echo base_url()?>assets/image_barcode/<?php echo $item->barcode_string.'.jpg' ?>" download="<?php echo $item->barcode_string ?>" ><span class="btn btn-xs btn-teal tooltips"><i class="fa fa-download"></i></span></a>
                         </td>
 
                     </tr>

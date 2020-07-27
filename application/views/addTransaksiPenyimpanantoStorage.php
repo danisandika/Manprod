@@ -62,7 +62,7 @@
     <div class="form-group row">
       <div class="col-sm-5 col-md-5">
       Jumlah Barang Masuk ke Storage&nbsp;<label style="color: red">*</label>
-      <input type="number" class="form-control" id="txtQtyMasuk" name="qty_masuk" required>
+      <input type="number" class="form-control" id="txtQtyMasuk" name="qty_masuk" required value="<?php echo $transaksi->qty_rusak; ?>" readonly>
     </div>
     <div class="col-sm-1">
     </div>
@@ -79,14 +79,14 @@
   </div>
       <div class="form-group row">
         <div class="col-sm-12 col-md-11">
-          Lokasi Penyimpanan&nbsp;<label style="color: red">*</label>
+          Lokasi Penyimpanan Kosong / Barang Sama&nbsp;<label style="color: red">*</label>
           <select class="form-control" name="id_storage" required>
             <option selected disabled>--- Pilih Tempat Penyimpanan ---</option>
             <?php  foreach($storagenotfull as $item) {?>
               <?php if($item->status == 0) {?>
                 <option value="<?php echo $item->id_storage ?>"><?php echo "Area : ".$item->area." | Rak : ".$item->racking." | Tingkat : ".$item->tingkat." | Nomor : ".$item->no_racking." | Kosong"?></option>
               <?php }else{ ?>
-                <option value="<?php echo $item->id_storage ?>"><?php echo "Area : ".$item->area." | Rak : ".$item->racking." | Tingkat : ".$item->tingkat." | Nomor : ".$item->no_racking." | Isi"?></option>
+                <option value="<?php echo $item->id_storage ?>"><?php echo "Area : ".$item->area." | Rak : ".$item->racking." | Tingkat : ".$item->tingkat." | Nomor : ".$item->no_racking." | Isi : ".$item->jumlah?></option>
               <?php } ?>
             <?php } ?>
           </select>

@@ -29,7 +29,7 @@ class TransaksiPenyimpananToStorage extends CI_Controller {
 	public function addTransaksiPenyimpanantoStorage($idbarang,$id_trx){
 		$data["transaksi"] = $this->model_transaksi->getByIDTransaksiPenyimpanan($id_trx);
 		$data["barang"] = $this->model_barang->getByID($idbarang);
-		$data["storagenotfull"] = $this->Storage->getAllNotFull();
+		$data["storagenotfull"] = $this->Storage->getAllNotFull($idbarang);
 		$data["storageByBarang"] = $this->Storage->getStorageByBarang($idbarang);
 		$this->load->view('addTransaksiPenyimpanantoStorage', $data);
 	}

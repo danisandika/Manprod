@@ -9,11 +9,11 @@ class Storage extends CI_Model
 		return $this->db->get($this->_table)->result();
   }
 
-  public function getAllNotFull()
+  public function getAllNotFull($idbarang)
   {
       $this->db->select('*')
               ->from('storage')
-              ->where('status',0);
+              ->where('status = 0 OR status = 1 AND id_barang = "'.$idbarang.'"');
       $query = $this->db->get();
       return $query->result();
   }
@@ -44,6 +44,7 @@ class Storage extends CI_Model
         $this->area = $post["area"];
         $this->racking = $post["racking"];
         $this->tingkat = $post["tingkat"];
+        $this->jumlah = 0;
         $this->no_racking = $post["no_racking"];
         $this->keterangan = $post["keterangan"];
         $this->status = 0;
@@ -68,5 +69,5 @@ class Storage extends CI_Model
     }
 
 
-    
+
 }

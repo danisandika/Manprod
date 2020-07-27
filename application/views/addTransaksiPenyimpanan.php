@@ -68,7 +68,7 @@
       </div>
       <div class="col-sm-5 col-md-5">
         Tanggal Masuk&nbsp;<label style="color: red">*</label>
-        <input type="date" class="form-control" id="dateMasuk" name="tgl_diterima" required/>
+        <input type="date" class="form-control" id="dateMasuk" name="tgl_diterima" required min="<?php echo date('Y-m-d'); ?>"/>
       </div>
       <div class="col-sm-1">
       </div>
@@ -84,7 +84,7 @@
       <br>
       <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
       <hr />
-      <button type="reset" onClick="window.location.href='<?php echo base_url('kelolaPelatihan')?>'" class="btn btn-danger btn-user btn-block">Batal</button>
+      <button type="reset" onClick="window.history.go(-1); return false;" class="btn btn-danger btn-user btn-block">Batal</button>
     </form>
   </div>
 </div>

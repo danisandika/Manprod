@@ -21,10 +21,11 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Barang</th>
+                    <th style="display:none;">Barcode</th>
                     <th>Jenis Barang</th>
                     <th style="text-align:center;">Jumlah Barang di Storage</th>
                     <th>Keterangan</th>
-                    <th>Tanggal Daftar</th>
+                    <th>Last Check</th>
                     <th>Status</th>
                     <th width="100px">Aksi</th>
                 </tr>
@@ -36,6 +37,7 @@
                 <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $item->nama_barang; ?></td>
+                    <td style="display:none;"><?php echo $item->barcode_string; ?></td>
                     <td><?php echo $item->jenis_barang; ?></td>
                     <td style="text-align:center;"><?php echo $item->qty; ?></td>
                     <td><?php echo $item->keterangan; ?></td>

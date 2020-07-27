@@ -71,7 +71,7 @@
 
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaSupplier' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaSupplier')?>">Kelola Supplier</a>
 
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaBarang' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaBarang')?>">Kelola Barang</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaBarang' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaBarang')?>">Kelola Barang </a> 
 
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaStorage' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaStorage')?>">Kelola Penyimpanan</a>
           </div>

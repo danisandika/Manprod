@@ -6,7 +6,7 @@ class model_transaksi extends CI_Model
 
 
     public function getAllPenyimpanan(){
-      $this->db->select('t.*,b.nama_barang as nama_barang,s.nama_perusahaan as nama_supplier,k.nama_kry as nama_karyawan');
+      $this->db->select('t.*,b.nama_barang as nama_barang,b.barcode_string as barcode,s.nama_perusahaan as nama_supplier,k.nama_kry as nama_karyawan');
       $this->db->from('transaksi_penyimpanan t');
       $this->db->join('barang b','t.id_barang=b.id_barang');
       $this->db->join('supplier s','s.id_supplier=t.id_supplier');
@@ -62,6 +62,14 @@ class model_transaksi extends CI_Model
     }
 
 
+    public function getStorageIsi($idstorage)
+    {
+        $query = $this->db->query("SELECT jumlah from storage where id_storage='".$idstorage."'");
+        $hasil = $query->row();
+        return $hasil->jumlah;
+    }
+
+
     public function saveDataToStorage(){
       $post = $this->input->post();
       $qty = $post["qty"];
@@ -81,9 +89,13 @@ class model_transaksi extends CI_Model
 
       $this->db->update($this->_table,$trx,array('id_trx'=>$id_trx));
 
+
       $storage->id_barang = $post["txtIdBarang"];
       $storage->nama_barang = $post["txtNamaBarang"];
-      $storage->jumlah = $qty_masuk;
+
+      $isi_storage = $this->getStorageIsi($post["id_storage"]);
+      $storage->jumlah = $qty_masuk + $isi_storage;
+
       $storage->tgl_masuk = date('Y-m-d');
       $storage->keterangan = $post["deskripsi"];
       $storage->status = $post["status_storage"];
@@ -120,6 +132,7 @@ class model_transaksi extends CI_Model
 
 
       $barang->qty = $qty_barang-$qty_ambil;
+      $barang->tgl_daftar = date('Y-m-d');
       $this->db->update("barang",$barang,array('id_barang'=>$post["id_barang"]));
 
       $this->id_trx = $id_trx;
@@ -128,6 +141,7 @@ class model_transaksi extends CI_Model
       $this->id_karyawan_bertugas = $this->session->userdata('user_id');
       $this->id_karyawan_ambil = $post["kry_ambil"];
       $this->tgl_diambil = $post["dtKeluar"];
+      $this->jam_diambil = $post["timeKeluar"];
       $this->deskripsi = $post["deskripsi"];
       $this->status = 1;
       return $this->db->insert("transaksi_pengambilan",$this);

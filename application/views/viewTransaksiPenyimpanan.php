@@ -25,6 +25,7 @@
               <tr>
                   <th>No</th>
                   <th>Nama Barang</th>
+                  <th style="display:none;">Barcode</th>
                   <th bgcolor="red"><font color="#fff">Jumlah Total</font></th>
                   <th bgcolor="green"><font color="#fff">Jumlah Masuk Rak</font></th>
                   <th bgcolor="orange"><font color="#fff">Jumlah Menunggu</font></th>
@@ -41,6 +42,7 @@
               <tr>
                 <td><?php echo $no; ?></td>
                 <td><?php echo $item->nama_barang ?></td>
+                <td style="display:none;"><?php echo $item->barcode; ?></td>
                 <td><?php echo $item->qty ?></td>
                 <td><?php echo $item->qty_masuk ?></td>
                 <td><?php echo $item->qty_rusak ?></td>

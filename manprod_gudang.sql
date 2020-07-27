@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jul 2020 pada 21.01
+-- Waktu pembuatan: 27 Jul 2020 pada 18.43
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.1.33
 
@@ -48,7 +48,7 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `jenis_barang`, `qty`, `satuan`, `kemasan`, `keterangan`, `tgl_daftar`, `status`, `barcode_string`, `barcode`) VALUES
 (3, 'HVS 100 gram', 'Kertas', 0, 'lembar', 'tidak ada', 'Untuk menulis menulis', '2020-07-25', 1, 'BRG0003', ''),
-(4, 'Sepatu Geoff Max', 'sepatu', 100, 'Pasang', 'Box', 'Sepatu baru alhamdulillah', '2020-07-26', 1, 'BRG0004', ''),
+(4, 'Sepatu Geoff Max', 'sepatu', 200, 'Pasang', 'Box', 'Sepatu baru alhamdulillah', '2020-07-26', 1, 'BRG0004', ''),
 (5, 'Lem G', 'Perekat', 0, 'Botol', 'Plastik', 'Lem yang sangat lengket', '2020-07-26', 1, 'BRG0005', ''),
 (6, 'Lem Alteko', 'Perekat', 0, 'Botol', 'Plastik', 'Lem Mantap', '2020-07-26', 1, 'BRG6', 'BRG6.jpg'),
 (7, 'Motor', 'Kendaraan', 0, 'Unit', 'Rangka', 'aa', '2020-07-26', 1, 'BRG0007', 'BRG0007.jpg');
@@ -126,9 +126,9 @@ CREATE TABLE `storage` (
 --
 
 INSERT INTO `storage` (`id_storage`, `area`, `id_barang`, `nama_barang`, `jumlah`, `tgl_masuk`, `racking`, `tingkat`, `no_racking`, `keterangan`, `status`) VALUES
-(19, 'A (Macan Kumbang)', NULL, '', 0, '0000-00-00', 'Macan Kumbang Selatan', 1, 1, '', 0),
-(20, 'A (Macan Kumbang)', 4, 'Sepatu', 100, '2020-07-26', 'Macan Kumbang Selatan', 2, 1, 'Masih sisa', 2),
-(23, 'Harimau Selatan', NULL, '', NULL, '0000-00-00', 'Selatan Utara', 1, 1, 'Gud s', 0);
+(19, 'A (Macan Kumbang)', 3, 'HVS', 12, '0000-00-00', 'Macan Kumbang Selatan', 1, 1, '', 1),
+(20, 'A (Macan Kumbang)', 4, 'Sepatu Geoff Max', 200, '2020-07-27', 'Macan Kumbang Selatan', 2, 1, 'dd', 1),
+(23, 'Harimau Selatan', NULL, '', 0, '0000-00-00', 'Selatan Utara', 1, 1, 'Gud s', 0);
 
 -- --------------------------------------------------------
 
@@ -166,6 +166,7 @@ CREATE TABLE `transaksi_pengambilan` (
   `id_karyawan_bertugas` int(11) NOT NULL,
   `id_karyawan_ambil` int(11) NOT NULL,
   `tgl_diambil` date NOT NULL,
+  `jam_diambil` time NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -174,9 +175,10 @@ CREATE TABLE `transaksi_pengambilan` (
 -- Dumping data untuk tabel `transaksi_pengambilan`
 --
 
-INSERT INTO `transaksi_pengambilan` (`id_trx`, `id_barang`, `qty`, `id_karyawan_bertugas`, `id_karyawan_ambil`, `tgl_diambil`, `deskripsi`, `status`) VALUES
-('OUT20200726183259', 3, 6, 7, 8, '2020-07-26', 'Makasih pak Toni', 1),
-('OUT20200726183335', 3, 6, 7, 10, '2020-07-26', 'Makasih pak Sugeng', 1);
+INSERT INTO `transaksi_pengambilan` (`id_trx`, `id_barang`, `qty`, `id_karyawan_bertugas`, `id_karyawan_ambil`, `tgl_diambil`, `jam_diambil`, `deskripsi`, `status`) VALUES
+('OUT20200726183259', 3, 6, 7, 8, '2020-07-26', '00:00:00', 'Makasih pak Toni', 1),
+('OUT20200726183335', 3, 6, 7, 10, '2020-07-26', '00:00:00', 'Makasih pak Sugeng', 1),
+('OUT20200727180804', 4, 40, 7, 8, '2020-07-27', '23:07:00', 'ss', 1);
 
 -- --------------------------------------------------------
 
@@ -203,7 +205,9 @@ CREATE TABLE `transaksi_penyimpanan` (
 
 INSERT INTO `transaksi_penyimpanan` (`id_trx`, `id_barang`, `qty`, `qty_masuk`, `qty_rusak`, `id_karyawan`, `id_supplier`, `tgl_diterima`, `deskripsi`, `status`) VALUES
 ('IN20200726182521', 3, 12, 12, 0, 7, 1, '2020-07-26', 'Barang Oke', 1),
-('IN20200726183012', 4, 120, 100, 20, 7, 1, '2020-07-26', 'Hola', 0);
+('IN20200726183012', 4, 120, 20, 0, 7, 1, '2020-07-26', 'Hola', 1),
+('IN20200727175323', 4, 120, 120, 0, 7, 1, '2020-07-27', 'as', 1),
+('IN20200727181550', 3, 100, 0, 100, 7, 1, '2020-07-27', 'as', 0);
 
 --
 -- Indexes for dumped tables

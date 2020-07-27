@@ -41,7 +41,7 @@
       <div class="col-sm-1">
       </div>
       <div class="col-sm-5 col-md-5">
-      Tanggal Keluar&nbsp;<label style="color: red">*</label>
+      Tanggal Masuk&nbsp;<label style="color: red">*</label>
       <input type="text" class="form-control" id="txtNama" name="txtTanggalMasuk" value="<?php echo date_format(new datetime($storage->tgl_masuk),"d F Y")?>" required readonly>
     </div>
     <div class="col-sm-1">
@@ -50,17 +50,21 @@
     <hr/>
     <span class="badge badge-warning">Proses Transaksi</span>
       <div class="form-group row">
-        <div class="col-sm-5 col-md-5">
+        <div class="col-sm-3 col-md-3">
         Jumlah Ambil&nbsp;<label style="color: red">*</label>
         <input type="number" class="form-control" id="txtQtyAmbil" name="txtJumlahAmbil" required>
       </div>
       <div class="col-sm-1">
       </div>
-      <div class="col-sm-5 col-md-5">
+      <div class="col-sm-3 col-md-3">
         Tanggal Keluar&nbsp;<label style="color: red">*</label>
         <input type="date" class="form-control" id="dateMasuk" name="dtKeluar" required min="<?php echo date('Y-m-d'); ?>"/>
       </div>
       <div class="col-sm-1">
+      </div>
+      <div class="col-sm-3 col-md-3">
+        Waktu Keluar&nbsp;<label style="color: red">*</label>
+        <input type="time" class="form-control" id="dateMasuk" name="timeKeluar" required min="<?php echo date('H:i'); ?>"/>
       </div>
     </div>
     <div class="form-group row">
