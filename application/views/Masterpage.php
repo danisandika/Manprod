@@ -71,7 +71,7 @@
 
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaSupplier' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaSupplier')?>">Kelola Supplier</a>
 
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaBarang' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaBarang')?>">Kelola Barang </a> 
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaBarang' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaBarang')?>">Kelola Barang</a>
 
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaStorage' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaStorage')?>">Kelola Penyimpanan</a>
           </div>
@@ -89,16 +89,26 @@
           <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaTransaksiPenyimpanan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaTransaksiPenyimpanan')?>">Transaksi Penyimpanan</a>
-
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'TransaksiPenyimpananToStorage' ? 'active' : ''; ?>" href="<?php echo base_url('TransaksiPenyimpananToStorage')?>">Tambah ke Storage</a>
-
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaTransaksiPengambilan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaTransaksiPengambilan')?>">Transaksi Pengambilan</a>
-
-
-
-
+              
           </div>
         </li>
+
+        <div class="sidebar-heading">
+          HISTORY
+        </div>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapseThree">
+              <i class="fas fa-fw fa-cog"></i>
+              <span>History</span>
+            </a>
+            <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item <?php echo $this->uri->segment(1) == 'HistoryBarangMasuk' ? 'active' : ''; ?>" href="<?php echo base_url('HistoryBarangMasuk')?>">History Penyimpanan</a>
+                <a class="collapse-item <?php echo $this->uri->segment(1) == 'HistoryBarangKeluar' ? 'active' : ''; ?>" href="<?php echo base_url('HistoryBarangKeluar')?>">History Pengambilan</a>
+              </div>
+          </li>
 
 
         <!-- Sidebar Toggler (Sidebar) -->
