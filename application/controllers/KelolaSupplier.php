@@ -7,12 +7,14 @@ class KelolaSupplier extends CI_Controller {
 	{
 		parent::__construct();
         $this->load->model("model_supplier");
+				$this->load->model("model_barang");
         $this->load->library("session");
         $this->load->library('form_validation');
 	}
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["supplier"] = $this->model_supplier->getAll();
 		$this->load->view('viewSupplier', $data);
   }
@@ -51,12 +53,14 @@ class KelolaSupplier extends CI_Controller {
 
     public function tambahSupplier()
 	  {
-		$this->load->view('addSupplier');
+			$data['count'] = $this->model_barang->barang_habis_stok();
+			$this->load->view('addSupplier',$data);
     }
 
   public function editSupplier()
 	{
         $id = $this->uri->segment(3);
+				$data['count'] = $this->model_barang->barang_habis_stok();
       	$data['supplier'] = $this->model_supplier->getByID($id);
 				$this->load->view('editSupplier',$data);
     }

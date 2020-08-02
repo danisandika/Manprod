@@ -27,12 +27,11 @@
                         <th>No</th>
                         <th>Nama Karyawan</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Email</th>
                         <th>Jenis Kelamin</th>
                         <th>Role</th>
                         <th>Status</th>
-                        <th width="300px">Aksi</th>
+                        <th width="100px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -41,9 +40,8 @@
                      foreach($karyawan as $item) { ?>
                     <tr>
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $item->nama_kry; ?></td> 
+                      <td><?php echo $item->nama_kry; ?></td>
                       <td><?php echo $item->username; ?></td>
-                      <td><?php echo $item->pass; ?></td>
                       <td><?php echo $item->email_kry; ?></td>
                       <td><?php echo $item->sex; ?></td>
                       <td><?php echo $item->nama_role; ?></td>

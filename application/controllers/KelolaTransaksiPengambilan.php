@@ -16,6 +16,7 @@ class KelolaTransaksiPengambilan extends CI_Controller {
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["barang"] = $this->model_barang->getBarangNotNull();
 		$this->load->view('viewBarangAtPengambilan', $data);
   }
@@ -23,12 +24,14 @@ class KelolaTransaksiPengambilan extends CI_Controller {
 
 	public function viewStorage($id_barang)
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["storageByBarang"] = $this->Storage->getStorageByBarang($id_barang);
 		$this->load->view('viewStoragePengambilan', $data);
 	}
 
 
 	public function addTransaksiPengambilan($idbarang,$id_storage){
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["karyawan"] = $this->Karyawan->getKaryawanTransaksiPengambilan();
 		$data["storage"] = $this->Storage->getByID($id_storage);
 		$data["barang"] = $this->model_barang->getByID($idbarang);

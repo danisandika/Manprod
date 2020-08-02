@@ -13,20 +13,24 @@
    			$this->load->library('form_validation');
 		}
 
+
 		public function index()
 		{
+				$data['count'] = $this->model_barang->barang_habis_stok();
      		$data['barang'] = $this->model_barang->getAll();
 			  $this->load->view('viewBarang',$data);
 		}
 
     public function tambahBarang()
 	  {
-	    	$this->load->view('addBarang');
+				$data['count'] = $this->model_barang->barang_habis_stok();
+	    	$this->load->view('addBarang',$data);
 	  }
 
     public function editBarang()
 	  {
 	  	$id = $this->uri->segment(3);
+			$data['count'] = $this->model_barang->barang_habis_stok();
       $data['barang'] = $this->model_barang->getByID($id);
 	    $this->load->view('editBarang',$data);
 	  }

@@ -15,87 +15,66 @@
     <div class="card-content">
         <div class="card-body">
             <form class="" role="form" action="<?php echo site_url('KelolaKaryawan/tambah') ?>" method="post">
-                
+
                 <div class="form-group row">
                     <div class="col-sm-11 col-md-11">
-                        Nama Karyawan
+                        Nama Karyawan&nbsp;<label style="color: red">*</label>
                         <input id="txtnamakry" type="text" class="form-control" name="nama_kry"/>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-5 col-md-5">
-                        Username
+                        Username&nbsp;<label style="color: red">*</label>
                         <input id="txtUsername" type="text" class="form-control col-lg-12" name="username" required/>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
-                    <div class="col-sm-5">
-                        Password
-                        <input id="txtNama" type="Password" class="form-control col-lg-12" name="pass" required/>
-                    </div>
-                    <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
                     <div class="col-sm-5 col-md-5">
-                        Email
+                        Email&nbsp;<label style="color: red">*</label>
                         <input id="txtEmail" type="Email" class="form-control col-lg-12" name="email_kry" required/>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
 
-                    <div class="col-sm-5 col-md-5">
-                        Jenis Kelamin
-                        <select class="form-control col-lg-12" name="sex" required>
-                        <option value="" disabled selected>--Pilih Jenis Kelamin--</option>
-                        <option value="Laki-laki">Laki - Laki </option>
-                        <option value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
                 </div>
 
 
                 <div class="form-group row">
+
                     <div class="col-sm-5 col-md-5">
-                        Role
+                        Jenis Kelamin&nbsp;<label style="color: red">*</label>
+                        <select class="form-control col-lg-12" name="sex" required>
+                        <option value="" disabled selected>--Pilih Jenis Kelamin--</option>
+                        <option value="laki laki">Laki - Laki </option>
+                        <option value="perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        Role&nbsp;<label style="color: red">*</label>
                         <select name="id_role" class="form-control col-lg-12" id="id_role" required>
                                     <option value="" disabled selected> Pilih Role </option>
                                         <?php foreach($karyawan->result() as $row):?>
                                         <option value="<?php echo $row->id_role;?>"><?php echo $row->nama_role;?></option>
                                         <?php endforeach;?>
-                                   
+
                         </select>
                     </div>
                     <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
-                    </div>
-
-                    <div class="col-sm-5 col-md-5">
-
-                        Status Karyawan
-                        <select class="form-control col-lg-12" name="status" required>
-                        <option value="" disabled selected>--Pilih Status--</option>
-                        <option value="1">Aktif</option>
-                        <option value="0">Tidak Aktif</option>
-                        </select>
-
-                    </div>
-                    <div class="col-sm-1">
-                        &nbsp;&nbsp;<label style="color: red">*</label>
+                        &nbsp;
                     </div>
                 </div>
+
+
+
                 <br>
                 <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
                 <hr />

@@ -44,19 +44,7 @@ class Login extends CI_Controller {
 				{
 					session_start();
 					$_SESSION['Admin'] = $ro;
-					redirect(base_url('kelolaKaryawan'));
-				}
-				else if($ro == "2")
-				{
-					session_start();
-					$_SESSION['Leader'] = $ro;
-					redirect(base_url('kelolaRole'));
-				}
-				else if($ro == "3")
-				{
-					session_start();
-					$_SESSION['Freelancer'] = $ro;
-					redirect(base_url('daftarPelatihan'));
+					redirect(base_url('Dashboard/index'));
 				}
 				else
 				{

@@ -26,9 +26,16 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-5 col-md-11">
+                    <div class="col-sm-5 col-md-5">
                         Jenis Barang&nbsp;<label style="color: red">*</label>
                         <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="jenis_barang" required/>
+                    </div>
+                    <div class="col-sm-1">
+                        &nbsp;
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        Batas Stok&nbsp;<label style="color: red">*</label>
+                        <input id="txtJenisBarang" type="number" class="form-control col-lg-12" name="batas_stok" required/>
                     </div>
                     <div class="col-sm-1">
                         &nbsp;

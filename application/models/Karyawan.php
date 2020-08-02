@@ -54,11 +54,11 @@ class Karyawan extends CI_Model
     $post = $this->input->post();
     $this->nama_kry = $post["nama_kry"];
     $this->username = $post["username"];
-    $this->pass = $post["pass"];
+    $this->pass = "GUDANG".date('Y');
     $this->email_kry = $post["email_kry"];
     $this->sex = $post["sex"];
     $this->id_role = $post["id_role"];
-    $this->status = $post["status"];
+    $this->status = 1;
 		return $this->db->insert($this->_table,$this);
 
 
@@ -69,14 +69,39 @@ class Karyawan extends CI_Model
     $post = $this->input->post();
     $this->nama_kry = $post["nama_kry"];
     $this->username = $post["username"];
-    $this->pass = $post["pass"];
     $this->email_kry = $post["email_kry"];
     $this->sex = $post["sex"];
     $this->id_role = $post["role"];
-    $this->status = $post["status"];
 
     $where = array(
       'id_kry' => $this->input->post("id_kry"),
+    );
+
+    $this->db->where($where);
+    return $this->db->update($this->_table, $this);
+  }
+
+  public function updateProfile()
+  {
+    $post = $this->input->post();
+    $this->nama_kry = $post["nama_kry"];
+    $this->username = $post["username"];
+    $this->email_kry = $post["email_kry"];
+    $this->sex = $post["sex"];
+    $where = array(
+      'id_kry' => $this->input->post("id_kry"),
+    );
+
+    $this->db->where($where);
+    return $this->db->update($this->_table, $this);
+  }
+
+  public function updatePassword()
+  {
+    $post = $this->input->post();
+    $this->pass = $post["txtrePassword"];
+    $where = array(
+      'id_kry' => $this->input->post("id"),
     );
 
     $this->db->where($where);

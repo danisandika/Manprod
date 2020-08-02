@@ -7,12 +7,14 @@ class KelolaStorage extends CI_Controller {
 	{
 		parent::__construct();
         $this->load->model("Storage");
+				$this->load->model("model_barang");
         $this->load->library("session");
         $this->load->library('form_validation');
 	}
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["storage"] = $this->Storage->getAll();
 		$this->load->view('viewStorage', $data);
   }
@@ -57,6 +59,7 @@ class KelolaStorage extends CI_Controller {
     public function editStorage()
      {
           $id = $this->uri->segment(3);
+					$data['count'] = $this->model_barang->barang_habis_stok();
           $data['storage'] = $this->Storage->getByID($id);
           $this->load->view('editStorage',$data);
     }
@@ -64,7 +67,8 @@ class KelolaStorage extends CI_Controller {
 
   public function tambahStorage()
 	{
-		$this->load->view('addStorage');
+		$data['count'] = $this->model_barang->barang_habis_stok();
+		$this->load->view('addStorage',$data);
   }
 
 

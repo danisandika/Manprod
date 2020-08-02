@@ -34,10 +34,11 @@ class model_history extends CI_Model
 
     public function getAllHistoryPengambilan(){
         $this->db->select('t.id_trx, t.id_barang,
-                            b.nama_barang as nama_barang, 
+                            b.nama_barang as nama_barang,
                             k.nama_kry as nama_karyawan_ambil,
                             k.nama_kry as nama_karyawan,
                             t.qty as qty,
+                            t.jam_diambil as jam,
                             t.tgl_diambil as tgl_diambil,
                             t.status');
         $this->db->from('transaksi_pengambilan t');
@@ -51,10 +52,11 @@ class model_history extends CI_Model
 
     public function getHistoryPengambilanByDate($from, $until){
         $this->db->select('t.id_trx, t.id_barang,
-                            b.nama_barang as nama_barang, 
+                            b.nama_barang as nama_barang,
                             k.nama_kry as nama_karyawan_ambil,
                             k.nama_kry as nama_karyawan,
                             t.qty as qty,
+                            t.jam_diambil as jam,
                             t.tgl_diambil as tgl_diambil,
                             t.status');
         $this->db->from('transaksi_pengambilan t');

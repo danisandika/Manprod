@@ -53,6 +53,12 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
+        <li class="nav-item <?php echo $this->uri->segment(1) == 'Dashboard' ? 'active' : ''; ?>">
+          <a class="nav-link" href="<?php echo base_url('Dashboard')?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
         <!-- Heading -->
         <div class="sidebar-heading">
           MASTER
@@ -91,7 +97,7 @@
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaTransaksiPenyimpanan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaTransaksiPenyimpanan')?>">Transaksi Penyimpanan</a>
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'TransaksiPenyimpananToStorage' ? 'active' : ''; ?>" href="<?php echo base_url('TransaksiPenyimpananToStorage')?>">Tambah ke Storage</a>
               <a class="collapse-item <?php echo $this->uri->segment(1) == 'KelolaTransaksiPengambilan' ? 'active' : ''; ?>" href="<?php echo base_url('KelolaTransaksiPengambilan')?>">Transaksi Pengambilan</a>
-              
+
           </div>
         </li>
 
@@ -137,6 +143,32 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter"><?php echo $count; ?></span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Peringatan Stok
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500"><?php echo date('d F Y'); ?></div>
+                    <?php echo $count; ?> Barang tidak mencukupi batas stok
+                  </div>
+                </a>
+
+              </div>
+            </li>
+
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -164,11 +196,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo base_url('KelolaPengguna/dtlPengguna/'.$this->session->userdata('user_email')) ?>">
+                <a class="dropdown-item" href="<?php echo base_url('KelolaKaryawan/editProfile/'.$this->session->userdata('user_id')) ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="<?php echo base_url('KelolaPengguna/upassword/'.$this->session->userdata('user_email')) ?>">
+                <a class="dropdown-item" href="<?php echo base_url('KelolaKaryawan/editPassword/'.$this->session->userdata('user_id')) ?>">
                   <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                   Ubah Password
                 </a>

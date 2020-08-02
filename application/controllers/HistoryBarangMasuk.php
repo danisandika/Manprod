@@ -8,6 +8,7 @@ class HistoryBarangMasuk extends CI_Controller {
 		parent::__construct();
         $this->load->model("model_transaksi");
 				$this->load->model("model_history");
+				$this->load->model("model_barang");
 				$this->load->model("Storage");
 				$this->load->model("Karyawan");
         $this->load->library("session");
@@ -16,6 +17,7 @@ class HistoryBarangMasuk extends CI_Controller {
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["history_simpan"] = $this->model_history->getAllHistoryPenyimpanan();
 		$this->load->view('viewHistoryPenyimpanan', $data);
     }
@@ -23,9 +25,10 @@ class HistoryBarangMasuk extends CI_Controller {
     public function viewPeriode()
 	{
 		$post = $this->input->post();
-        $fromdate = $post["fromdate"];
+    $fromdate = $post["fromdate"];
 		$untildate = $post["untildate"];
-		
+		$data['count'] = $this->model_barang->barang_habis_stok();
+
 		if($fromdate == null || $untildate == null){
 			$data["history_simpan"] = $this->model_history->getAllHistoryPenyimpanan();
 		}

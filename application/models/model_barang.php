@@ -17,6 +17,13 @@ class model_barang extends CI_Model
       return $query->result();
     }
 
+    public function barang_habis_stok(){
+      $this->db->where('qty < batas_stok');
+      $this->db->or_where('qty',0);
+      $this->db->from('barang');
+      return $this->db->count_all_results(); // Produces an integer, like 17
+    }
+
     public function getByID($id_barang)
     {
         $this->db->select('*')
@@ -44,6 +51,7 @@ class model_barang extends CI_Model
         $this->nama_barang = $post["nama_barang"];
         $this->jenis_barang = $post["jenis_barang"];
         $this->qty = 0;
+        $this->batas_stok = $post["batas_stok"];
         $this->satuan = $post["satuan"];
         $this->kemasan = $post["kemasan"];
         $this->keterangan = $post["keterangan"];
@@ -73,6 +81,7 @@ class model_barang extends CI_Model
         $this->jenis_barang = $post["jenis_barang"];
         $this->satuan = $post["satuan"];
         $this->kemasan = $post["kemasan"];
+        $this->batas_stok = $post["batas_stok"];
         $this->keterangan = $post["keterangan"];
 
         $where = array(

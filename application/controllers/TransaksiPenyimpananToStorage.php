@@ -16,17 +16,20 @@ class TransaksiPenyimpananToStorage extends CI_Controller {
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["transaksi"] = $this->model_transaksi->getAllPenyimpanan();
 		$this->load->view('viewTransaksiPenyimpanan',$data);
   }
 
 	public function tambahTransaksiPenyimpanan()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["barang"] = $this->model_barang->getAll();
 		$this->load->view('addtransaksiPenyimpanan', $data);
 	}
 
 	public function addTransaksiPenyimpanantoStorage($idbarang,$id_trx){
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["transaksi"] = $this->model_transaksi->getByIDTransaksiPenyimpanan($id_trx);
 		$data["barang"] = $this->model_barang->getByID($idbarang);
 		$data["storagenotfull"] = $this->Storage->getAllNotFull($idbarang);
@@ -61,18 +64,9 @@ class TransaksiPenyimpananToStorage extends CI_Controller {
             echo "<script>history.go(-1)</script>";
         }
     }
-    public function tambahBarang()
-	{
-		$this->load->view('transaksiPenyimpanan/add');
-    }
 
-    public function editBarang()
-	{
-        $id = $this->uri->segment(3);
-      	$data['barang'] = $this->model_barang->getByID($id);
-		$this->load->view('barang/editBarang',$data);
-    }
 
+  
     public function aktif($id_barang)
     {
         $barang = $this->model_barang;

@@ -16,26 +16,36 @@
         <div class="card-body">
             <form class="" role="form" action="<?php echo site_url('KelolaBarang/update') ?>" method="post">
             <input type="hidden" value="<?php echo $barang->id_barang; ?>" name="id_barang">
-                <div class="form-group row">
-                    <div class="col-sm-5 col-md-5">
-                        Nama Barang&nbsp;<label style="color: red">*</label>
-                        <input id="txtNamabarang" type="text" class="form-control" name="nama_barang" value="<?php echo $barang->nama_barang; ?>"/>
-                    </div>
-                    <div class="col-sm-1">
-                        &nbsp;
-                    </div>
-                    <div class="col-sm-5 col-md-5">
-                        Jenis Barang&nbsp;<label style="color: red">*</label>
-                        <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="jenis_barang" value="<?php echo $barang->jenis_barang; ?>" required/>
-                    </div>
-                    <div class="col-sm-1">
-                        &nbsp;
-                    </div>
+            <div class="form-group row">
+                <div class="col-sm-11 col-md-11">
+                    Nama Barang&nbsp;<label style="color: red">*</label>
+                    <input id="txtNamaBarang" type="text" class="form-control" name="nama_barang" required value="<?php echo $barang->nama_barang; ?>"/>
                 </div>
+                <div class="col-sm-1">
+                    &nbsp;
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-5 col-md-5">
+                    Jenis Barang&nbsp;<label style="color: red">*</label>
+                    <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="jenis_barang" required value="<?php echo $barang->jenis_barang; ?>"/>
+                </div>
+                <div class="col-sm-1">
+                    &nbsp;
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    Batas Stok&nbsp;<label style="color: red">*</label>
+                    <input id="txtJenisBarang" type="number" class="form-control col-lg-12" name="batas_stok" required value="<?php echo $barang->batas_stok; ?>"/>
+                </div>
+                <div class="col-sm-1">
+                    &nbsp;
+                </div>
+            </div>
 
                 <div class="form-group row">
                   <div class="col-sm-5 col-md-5">
-                      Jenis Barang&nbsp;<label style="color: red">*</label>
+                      Kemasan&nbsp;<label style="color: red">*</label>
                       <input id="txtJenisBarang" type="text" class="form-control col-lg-12" name="kemasan" value="<?php echo $barang->kemasan; ?>" required/>
                   </div>
                   <div class="col-sm-1">

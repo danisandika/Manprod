@@ -7,12 +7,14 @@ class KelolaRole extends CI_Controller {
 	{
 		parent::__construct();
         $this->load->model("model_role");
+				$this->load->model("model_barang");
         $this->load->library("session");
         $this->load->library('form_validation');
 	}
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["role"] = $this->model_role->getAll();
 		$this->load->view('viewRole', $data);
   }
@@ -55,12 +57,14 @@ class KelolaRole extends CI_Controller {
 
   public function tambahRole()
 	{
-		$this->load->view('addRole');
+		$data['count'] = $this->model_barang->barang_habis_stok();
+		$this->load->view('addRole',$data);
   }
 
   public function editRole()
 	 {
         $id = $this->uri->segment(3);
+				$data['count'] = $this->model_barang->barang_habis_stok();
       	$data['role'] = $this->model_role->getByID($id);
 		    $this->load->view('editRole',$data);
   }

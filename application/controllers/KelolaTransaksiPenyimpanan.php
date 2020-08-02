@@ -14,12 +14,14 @@ class KelolaTransaksiPenyimpanan extends CI_Controller {
 
 	public function index()
 	{
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["barang"] = $this->model_barang->getAll();
 		$this->load->view('addBarangToTransaksi', $data);
   }
 
 
 	public function tambahTransaksi($idbarang){
+		$data['count'] = $this->model_barang->barang_habis_stok();
 		$data["daftarTransaksi"] = $this->model_transaksi->getPenyimpananByBarang($idbarang);
 		$data["supplier"] = $this->model_transaksi->getAllSupplier();
 		$data["barang"] = $this->model_barang->getByID($idbarang);
