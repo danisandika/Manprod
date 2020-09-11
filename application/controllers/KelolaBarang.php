@@ -23,6 +23,7 @@
 
     public function tambahBarang()
 	  {
+				//$data["max"] = $this->model_barang->cekkodebarang();
 				$data['count'] = $this->model_barang->barang_habis_stok();
 	    	$this->load->view('addBarang',$data);
 	  }
